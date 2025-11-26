@@ -1,0 +1,17 @@
+{
+  "itemGroup.vubuihorse": "VuBui Horse",
+  "block.vubuihorse.example_block": "Example Block",
+  "item.vubuihorse.example_item": "Example Item",
+
+  "key.categories.vubuihorse": "VuBui Horse",
+  "key.vubuihorse.horse_fireball": "Horse Fireball Spit",
+
+  "vubuihorse.configuration.title": "VuBui Horse Configs",
+  "vubuihorse.configuration.section.vubuihorse.common.toml": "VuBui Horse Configs",
+  "vubuihorse.configuration.section.vubuihorse.common.toml.title": "VuBui Horse Configs",
+  "vubuihorse.configuration.fireballCooldownMin": "Fireball Cooldown Min (seconds)",
+  "vubuihorse.configuration.fireballCooldownMax": "Fireball Cooldown Max (seconds)",
+  "vubuihorse.configuration.fireballDamage": "Fireball Damage",
+  "vubuihorse.configuration.enableFireSpread": "Enable Fire Spread",
+  "vubuihorse.configuration.wildHorseSpitChance": "Wild Horse Spit Chance"
+}
