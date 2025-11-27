@@ -3,8 +3,10 @@
   "block.vubuihorse.example_block": "Example Block",
   "item.vubuihorse.example_item": "Example Item",
 
-  "key.categories.vubuihorse": "VuBui Horse",
+  "key.category.vubuihorse.controls": "VuBui Horse",
   "key.vubuihorse.horse_fireball": "Horse Fireball Spit",
+
+  "vubuihorse.mount.hint": "Press %s to shoot fireballs!",
 
   "vubuihorse.configuration.title": "VuBui Horse Configs",
   "vubuihorse.configuration.section.vubuihorse.common.toml": "VuBui Horse Configs",

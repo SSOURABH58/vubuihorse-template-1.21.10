@@ -119,7 +119,10 @@ public class HorseFireballHandler {
         java.util.List<LivingEntity> nearbyEntities = horse.level().getEntitiesOfClass(
             LivingEntity.class,
             horse.getBoundingBox().inflate(10.0),
-            entity -> entity != horse && entity.isAlive() && !(entity instanceof Player)
+            entity -> entity != horse 
+                && entity.isAlive() 
+                && !(entity instanceof Player) 
+                && !(entity instanceof AbstractHorse) // Don't target other horses
         );
         
         if (!nearbyEntities.isEmpty()) {

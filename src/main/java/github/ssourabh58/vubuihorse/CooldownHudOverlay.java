@@ -1,6 +1,5 @@
 package github.ssourabh58.vubuihorse;
 
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
@@ -9,28 +8,18 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
-import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+import net.neoforged.neoforge.client.event.RenderGuiEvent;
+
 
 @EventBusSubscriber(modid = VuBuiHorse.MODID, value = Dist.CLIENT)
 public class CooldownHudOverlay {
-    
-    private static final ResourceLocation FIRE_ICON = ResourceLocation.withDefaultNamespace("textures/mob_effect/fire_resistance.png");
 
     @SubscribeEvent
-    public static void registerGuiLayers(RegisterGuiLayersEvent event) {
-        event.registerAbove(
-            VanillaGuiLayers.HOTBAR,
-            ResourceLocation.fromNamespaceAndPath(VuBuiHorse.MODID, "fireball_cooldown"),
-            CooldownHudOverlay::renderCooldown
-        );
-    }
-
-    private static void renderCooldown(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
+    public static void onRenderGuiPost(RenderGuiEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         
-        if (player == null) {
+        if (player == null || mc.options.hideGui) {
             return;
         }
 
@@ -45,25 +34,32 @@ public class CooldownHudOverlay {
 
         long cooldownMs = HorseFireballHandler.getCooldownRemaining(horse.getUUID());
         
-        if (cooldownMs <= 0) {
-            return; // No cooldown, don't show
-        }
+       
 
         int cooldownSeconds = (int) Math.ceil(cooldownMs / 1000.0);
         
-        // Position at top left (like potion effects)
-        int x = 10;
-        int y = 10;
-        int iconSize = 18;
+        // Position at top left corner with some padding
+        int x = 8;
+        int y = 8;
+        int iconSize = 16;
 
-        // Draw fire icon
-        guiGraphics.blit(FIRE_ICON, x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        GuiGraphics guiGraphics = event.getGuiGraphics();
+         // Render fire charge item as icon
+        net.minecraft.world.item.ItemStack fireballStack = new net.minecraft.world.item.ItemStack(
+            net.minecraft.world.item.Items.FIRE_CHARGE
+        );
+
         
-        // Draw cooldown text
-        String cooldownText = String.valueOf(cooldownSeconds);
-        int textX = x + iconSize + 4;
-        int textY = y + (iconSize / 2) - 4;
+         if (cooldownMs <= 0) {
+             guiGraphics.renderItem(fireballStack, x, y);
+            return; // No cooldown, don't show
+        }
+        // Set opacity to 75% (192 out of 255)
+     
+        // guiGraphics.renderItem(fireballStack, x, y); // Renders the icon with the active transparency
+  
+       
+       
         
-        guiGraphics.drawString(mc.font, cooldownText + "s", textX, textY, 0xFFFFFF, true);
     }
 }
