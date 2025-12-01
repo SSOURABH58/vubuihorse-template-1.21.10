@@ -1,5 +1,9 @@
 # VuBui Horse - Fireball Spitting Horses Mod 🐴🔥
 
+## Intro Video
+
+[![Watch the intro](https://img.youtube.com/vi/ELGqpF-xpDI/maxresdefault.jpg)](https://youtube.com/shorts/ELGqpF-xpDI?feature=share)
+
 ## Why This Mod Exists
 
 If you've watched Vu Bui's "LATEST GAME DROP DATE REVEAL! | MINECRAFT MONTHLY" video, you know exactly where this is going. When discussing the new Mounts of Mayhem update, Vu had a brilliantly ridiculous idea:
@@ -57,7 +61,7 @@ The mod creates a config file at `config/vubuihorse-common.toml` where you can a
 
 ## License
 
-See TEMPLATE_LICENSE.txt for licensing information.
+This mod is source-available but redistribution is prohibited. You can view and study the code, but you may not redistribute it in any form, modified or otherwise. See LICENSE.txt for full details.
 
 ---
 
